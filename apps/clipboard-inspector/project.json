@@ -1,0 +1,102 @@
+{
+  "name": "clipboard-inspector",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/clipboard-inspector/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/clipboard-inspector",
+        "index": "apps/clipboard-inspector/src/index.html",
+        "baseHref": "/",
+        "main": "apps/clipboard-inspector/src/main.tsx",
+        "tsConfig": "apps/clipboard-inspector/tsconfig.app.json",
+        "assets": [
+          "apps/clipboard-inspector/src/favicon.ico",
+          "apps/clipboard-inspector/src/assets"
+        ],
+        "styles": [
+          "apps/clipboard-inspector/src/styles.css"
+        ],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/clipboard-inspector/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/clipboard-inspector/src/environments/environment.ts",
+              "with": "apps/clipboard-inspector/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "clipboard-inspector:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "clipboard-inspector:build:development"
+        },
+        "production": {
+          "buildTarget": "clipboard-inspector:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/clipboard-inspector/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/clipboard-inspector/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": [
+    "app"
+  ]
+}
