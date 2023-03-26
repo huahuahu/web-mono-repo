@@ -1,0 +1,39 @@
+name: NodeJS with Webpack
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  front-end:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [17.x, 18.x]
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Clean
+      run: |
+        make clean-package
+
+    - name: Install 
+      run: |
+        make install
+    
+    - name: lint
+      run: |
+        make lint
+    
+    - name: build
+      run: |
+        make build
+    
