@@ -1,53 +1,38 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Route, Routes, Link } from "react-router-dom";
 import React from "react";
-import styles from "./app.module.css";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box/Box";
+import Button from "@mui/material/Button/Button";
+import ContentPasteGoIcon from "@mui/icons-material/ContentPasteGo";
 
-// eslint-disable-next-lin mobx/missing-observer -- this is a component
-export const App = function () {
+export function App() {
   return (
-    <>
-      <div />
-      hello tiger
-      <div />
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{" "}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
-    </>
+    <Container maxWidth="md">
+      <Box
+        sx={{
+          bgcolor: "#cfe8fc",
+          height: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Button
+          onClick={() => {
+            navigator.clipboard.readText().then((text) => {
+              console.log(text);
+            });
+          }}
+          size="large"
+          variant="contained"
+          endIcon={<ContentPasteGoIcon />}
+        >
+          Paste
+        </Button>
+      </Box>
+    </Container>
   );
-};
+}
 
 export default App;
