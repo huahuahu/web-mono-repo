@@ -19,7 +19,9 @@
         "project": ["apps/clipboard-inspector/tsconfig.*?.json"]
       },
 
-      "rules": {}
+      "rules": {
+        "mobx/missing-observer": "off"
+      }
     },
     {
       "files": [
