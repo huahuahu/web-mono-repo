@@ -16,3 +16,8 @@ lint:
 lint-fix:
 	npx nx run-many --target=lint --all=true --fix=true
 
+deploy-clipboard-inspector-mobile:
+	npx nx build clipboard-inspector --configuration=production-mobile; \
+	cp dist/apps/clipboard-inspector/index.html ../TestWebview/TestWebView/TestWebView/resource/index.html
+
+
