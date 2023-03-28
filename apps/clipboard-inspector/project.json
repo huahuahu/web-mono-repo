@@ -48,6 +48,21 @@
           "namedChunks": false,
           "extractLicenses": true,
           "vendorChunk": false
+        },
+        "production-mobile": {
+          "fileReplacements": [
+            {
+              "replace": "apps/clipboard-inspector/src/environments/environment.ts",
+              "with": "apps/clipboard-inspector/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "generateIndexHtml": false,
+          "vendorChunk": false
         }
       }
     },
@@ -55,6 +70,7 @@
       "executor": "@nrwl/webpack:dev-server",
       "defaultConfiguration": "development",
       "options": {
+        "ssl": true,
         "buildTarget": "clipboard-inspector:build",
         "hmr": true
       },
