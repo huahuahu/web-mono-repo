@@ -22,15 +22,23 @@ export function App() {
   }, [setPastedText]);
 
   return (
-    <Container maxWidth="md">
+    <Container
+      maxWidth="md"
+      sx={{
+        flexGrow: 1,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Box
         sx={{
           bgcolor: "#cfe8fc",
-          height: "100vh",
+          height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
+          flexGrow: 1,
         }}
       >
         <Button
