@@ -24,4 +24,3 @@ deploy-clipboard-inspector-mobile:
 	npx nx build clipboard-inspector --configuration=production-mobile; \
 	cp dist/apps/clipboard-inspector/index.html ../TestWebview/TestWebView/TestWebView/resource/index.html
 
-
