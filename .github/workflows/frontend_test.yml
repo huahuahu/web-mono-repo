@@ -39,6 +39,7 @@ jobs:
     
     - name: sync-azure
       run: 
+        git --no-pager branch; \
         git checkout azure-websites; \
         npx nx build clipboard-inspector --configuration=production; \
         git add . ;\
