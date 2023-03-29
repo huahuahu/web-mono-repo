@@ -39,8 +39,8 @@ jobs:
     
     - name: sync-azure
       run: 
-        git checkout azure-websites
-        npx nx build clipboard-inspector --configuration=production
-        git add .
-        git commit -m 'deploy from main'
+        git checkout azure-websites; \
+        npx nx build clipboard-inspector --configuration=production; \
+        git add . ;\
+        git commit -m 'deploy from main';
     
