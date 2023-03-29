@@ -32,7 +32,7 @@ export function App() {
     >
       <Box
         sx={{
-          bgcolor: "#cfe8fc",
+          bgcolor: "#cfe8fd",
           height: "100%",
           display: "flex",
           flexDirection: "column",
