@@ -1,0 +1,102 @@
+{
+  "name": "gpt-app-web",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/gpt-app-web/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/gpt-app-web",
+        "index": "apps/gpt-app-web/src/index.html",
+        "baseHref": "/",
+        "main": "apps/gpt-app-web/src/main.tsx",
+        "tsConfig": "apps/gpt-app-web/tsconfig.app.json",
+        "assets": [
+          "apps/gpt-app-web/src/favicon.ico",
+          "apps/gpt-app-web/src/assets"
+        ],
+        "styles": [
+          "apps/gpt-app-web/src/styles.scss"
+        ],
+        "scripts": [],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/gpt-app-web/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/gpt-app-web/src/environments/environment.ts",
+              "with": "apps/gpt-app-web/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "gpt-app-web:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "gpt-app-web:build:development"
+        },
+        "production": {
+          "buildTarget": "gpt-app-web:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/gpt-app-web/**/*.{ts,tsx,js,jsx}"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "apps/gpt-app-web/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": [
+    "app"
+  ]
+}
