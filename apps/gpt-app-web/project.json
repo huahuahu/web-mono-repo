@@ -56,7 +56,8 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "gpt-app-web:build",
-        "hmr": true
+        "hmr": true,
+        "proxyConfig": "apps/gpt-app-web/proxy.conf.json"
       },
       "configurations": {
         "development": {
