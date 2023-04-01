@@ -17,11 +17,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@huahuahu/ui-component": [
-        "libs/huicomponent/src/index.ts"
-      ]
-    }
+    "paths": {}
   },
   "exclude": [
     "node_modules",
