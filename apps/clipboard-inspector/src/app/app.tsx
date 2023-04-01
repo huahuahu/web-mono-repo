@@ -1,28 +1,19 @@
-/* eslint-disable prettier/prettier */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Route, Routes, Link } from "react-router-dom";
-import React, { useCallback, useMemo, useReducer, useState } from "react";
+import React, { useCallback, useMemo, useReducer } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box/Box";
 import { ThemeProvider } from "@emotion/react";
-import {
-  Alert,
-  Button,
-  CssBaseline,
-  createTheme,
-  useMediaQuery,
-} from "@mui/material";
+import { Button, CssBaseline, createTheme, useMediaQuery } from "@mui/material";
 import { getClipboardItems } from "./Data/getClipboardItems";
 import PasteButton from "./Components/paste-button/paste-button";
 import ClipboardItemListComponent from "./Components/clipboard-item-list-component/clipboard-item-list-component";
 import {
-  PasetActionKind as PasteActionKind,
+  PasteActionKind,
   counterReducer,
   createInitialState,
 } from "./Data/reducer";
+import PasteErrorComponent from "./Components/paste-error-component/paste-error-component";
 
 export function App() {
-  // create useReducer to handle state
   const [state, dispatch] = useReducer(counterReducer, createInitialState());
 
   // TODO: Can this be async?
@@ -58,7 +49,6 @@ export function App() {
     return (
       <Box
         sx={{
-          height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -74,7 +64,6 @@ export function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
       <Container
         maxWidth="md"
         sx={{
@@ -91,34 +80,7 @@ export function App() {
           </>
         )}
         {state.error && (
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              flexGrow: 1,
-              justifyContent: "center",
-            }}
-          >
-            <Alert
-              severity="error"
-              action={
-                <Button
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    dispatch({
-                      type: PasteActionKind.Reset,
-                      payload: undefined,
-                    });
-                  }}
-                >
-                  Back
-                </Button>
-              }
-            >
-              {state.error.message}
-            </Alert>{" "}
-          </Box>
+          <PasteErrorComponent error={state.error} onDismiss={onReset} />
         )}
       </Container>
     </ThemeProvider>

@@ -1,5 +1,5 @@
 // An enum with all the types of actions to use in our reducer
-export enum PasetActionKind {
+export enum PasteActionKind {
   Reset = "Reset",
   Error = "Error",
   Data = "Data",
@@ -7,7 +7,7 @@ export enum PasetActionKind {
 
 // An interface for our actions
 interface PasteAction {
-  type: PasetActionKind;
+  type: PasteActionKind;
   payload: Error | ClipboardItem[] | undefined;
 }
 
@@ -33,19 +33,19 @@ export function counterReducer(
 ): PasteState {
   const { type, payload } = action;
   switch (type) {
-    case PasetActionKind.Reset:
+    case PasteActionKind.Reset:
       return {
         error: undefined,
         data: undefined,
         shouldShowPasteButton: true,
       };
-    case PasetActionKind.Data:
+    case PasteActionKind.Data:
       return {
         error: undefined,
         data: payload as ClipboardItem[],
         shouldShowPasteButton: false,
       };
-    case PasetActionKind.Error:
+    case PasteActionKind.Error:
       return {
         error: payload as Error,
         data: undefined,
