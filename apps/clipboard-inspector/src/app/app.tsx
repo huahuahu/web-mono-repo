@@ -1,16 +1,35 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Route, Routes, Link } from "react-router-dom";
-import React, { useCallback } from "react";
+import React, { useCallback, useMemo, useReducer } from "react";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box/Box";
-import Button from "@mui/material/Button/Button";
-import ContentPasteGoIcon from "@mui/icons-material/ContentPasteGo";
-import Typography from "@mui/material/Typography/Typography";
 import { ThemeProvider } from "@emotion/react";
-import { CssBaseline, createTheme, useMediaQuery } from "@mui/material";
+import { Button, CssBaseline, createTheme, useMediaQuery } from "@mui/material";
+import { getClipboardItems } from "./Data/getClipboardItems";
+import PasteButton from "./Components/paste-button/paste-button";
+import ClipboardItemListComponent from "./Components/clipboard-item-list-component/clipboard-item-list-component";
+import {
+  PasteActionKind,
+  counterReducer,
+  createInitialState,
+} from "./Data/reducer";
+import PasteErrorComponent from "./Components/paste-error-component/paste-error-component";
 
 export function App() {
-  const [pastedText, setPastedText] = React.useState<string>("");
+  const [state, dispatch] = useReducer(counterReducer, createInitialState());
+
+  // TODO: Can this be async?
+  const onPaste = useCallback(async () => {
+    try {
+      const clipboardItems = await getClipboardItems();
+      dispatch({ type: PasteActionKind.Data, payload: clipboardItems });
+    } catch (error) {
+      dispatch({ type: PasteActionKind.Error, payload: error as Error });
+    }
+  }, []);
+
+  // create a function to reset state
+  const onReset = useCallback(() => {
+    dispatch({ type: PasteActionKind.Reset, payload: undefined });
+  }, []);
 
   // get theme using useMediaQuery
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
@@ -26,21 +45,25 @@ export function App() {
     [prefersDarkMode]
   );
 
-  const onPaste = useCallback(() => {
-    navigator.clipboard
-      .readText()
-      .then((text) => {
-        setPastedText(text);
-      })
-      .catch((err) => {
-        setPastedText(err.toString());
-      });
-  }, [setPastedText]);
+  const pasteScene = useMemo(() => {
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          flexGrow: 1,
+        }}
+      >
+        <PasteButton onPaste={onPaste} />
+      </Box>
+    );
+  }, [onPaste]);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-
       <Container
         maxWidth="md"
         sx={{
@@ -49,32 +72,16 @@ export function App() {
           flexDirection: "column",
         }}
       >
-        <Box
-          sx={{
-            bgcolor: "#cfe8fc",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            flexGrow: 1,
-          }}
-        >
-          <Button
-            onClick={onPaste}
-            size="large"
-            variant="contained"
-            endIcon={<ContentPasteGoIcon />}
-          >
-            Paste
-          </Button>
-
-          {pastedText && (
-            <Typography variant="subtitle1" component="h2">
-              {pastedText}
-            </Typography>
-          )}
-        </Box>
+        {state.shouldShowPasteButton && pasteScene}
+        {state.data && (
+          <>
+            <Button onClick={onReset}>Reset</Button>
+            <ClipboardItemListComponent clipboardItems={state.data} />
+          </>
+        )}
+        {state.error && (
+          <PasteErrorComponent error={state.error} onDismiss={onReset} />
+        )}
       </Container>
     </ThemeProvider>
   );

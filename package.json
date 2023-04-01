@@ -17,6 +17,8 @@
     "@nrwl/webpack": "15.8.9",
     "@nrwl/workspace": "15.8.9",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@rollup/plugin-url": "^7.0.0",
+    "@svgr/rollup": "^6.1.2",
     "@svgr/webpack": "^6.1.2",
     "@testing-library/react": "14.0.0",
     "@types/express": "~4.17.13",
@@ -70,6 +72,7 @@
     "openai": "^3.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-query": "^3.39.3",
     "react-router-dom": "6.8.1",
     "tslib": "^2.3.0"
   }
