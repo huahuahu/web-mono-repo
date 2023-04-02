@@ -74,10 +74,10 @@ export function App() {
       >
         {state.shouldShowPasteButton && pasteScene}
         {state.data && (
-          <>
-            <Button onClick={onReset}>Reset</Button>
-            <ClipboardItemListComponent clipboardItems={state.data} />
-          </>
+          <ClipboardItemListComponent
+            onReset={onReset}
+            clipboardItems={state.data}
+          />
         )}
         {state.error && (
           <PasteErrorComponent error={state.error} onDismiss={onReset} />
