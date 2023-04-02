@@ -49,7 +49,13 @@ export function ClipboardItemRepresentationComponent(
           <Typography>{type}</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>{textRepresentaion}</Typography>
+          <Typography
+            sx={{
+              wordBreak: "break-all",
+            }}
+          >
+            {textRepresentaion}
+          </Typography>
         </AccordionDetails>
       </Accordion>
     </ListItem>
