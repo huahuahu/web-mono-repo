@@ -22,6 +22,6 @@ lint-fix:
 
 deploy-clipboard-inspector-mobile:
 	npx nx build clipboard-inspector --configuration=production-mobile; \
-	cp dist/apps/clipboard-inspector/index.html ../TestWebview/TestWebView/TestWebView/resource/index.html
+	cp dist/apps/clipboard-inspector/index.html ../ios-mono-repo-huahuahu/MonoRepos/ClipboardInspector/ClipboardInspector/Resources/clipboard.html
 
 
