@@ -16,7 +16,7 @@ export function ClipboardItemRepresentationComponent(
 ) {
   const { clipBoardItem, type } = props;
 
-  const [textRepresentaion, setTextRepresentation] = React.useState<
+  const [textRepresentation, setTextRepresentation] = React.useState<
     string | null
   >(null);
   useEffect(() => {
@@ -54,7 +54,7 @@ export function ClipboardItemRepresentationComponent(
               wordBreak: "break-all",
             }}
           >
-            {textRepresentaion}
+            {textRepresentation}
           </Typography>
         </AccordionDetails>
       </Accordion>
