@@ -3,6 +3,7 @@ import ContentPasteGoIcon from "@mui/icons-material/ContentPasteGo";
 
 import React from "react";
 import styles from "./paste-button.module.css";
+import { LocalizedStringManager } from "../../Localization/localizedString";
 /* eslint-disable-next-line */
 export interface PasteButtonProps {
   onPaste: () => void;
@@ -17,7 +18,7 @@ export function PasteButton(props: PasteButtonProps) {
       variant="contained"
       endIcon={<ContentPasteGoIcon />}
     >
-      Paste
+      {LocalizedStringManager.getInstance().currentLocalizedStrings.paste}
     </Button>
   );
 }

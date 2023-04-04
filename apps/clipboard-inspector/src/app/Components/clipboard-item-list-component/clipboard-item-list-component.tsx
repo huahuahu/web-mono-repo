@@ -8,12 +8,11 @@ import {
   ListItemIcon,
   ListItemText,
   ListSubheader,
-  Toolbar,
-  Typography,
 } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import styles from "./clipboard-item-list-component.module.css";
 import ClipboardItemComponent from "../clipboard-item-component/clipboard-item-component";
+import { LocalizedStringManager } from "../../Localization/localizedString";
 
 export interface ClipboardItemListComponentProps {
   onReset: () => void;
@@ -36,10 +35,20 @@ export function ClipboardItemListComponent(
         }}
       >
         <Alert
-          action={<Button onClick={onReset}>Reset</Button>}
+          action={
+            <Button onClick={onReset}>
+              {
+                LocalizedStringManager.getInstance().currentLocalizedStrings
+                  .backButtonString
+              }
+            </Button>
+          }
           severity="info"
         >
-          There is no data in the clipboard.
+          {
+            LocalizedStringManager.getInstance().currentLocalizedStrings
+              .noDataTips
+          }
         </Alert>
       </Box>
     );
@@ -50,13 +59,20 @@ export function ClipboardItemListComponent(
         <ListItemIcon>
           <ArrowBackIcon />
         </ListItemIcon>
-        <ListItemText primary="Back" />
+        <ListItemText
+          primary={
+            LocalizedStringManager.getInstance().currentLocalizedStrings
+              .backButtonString
+          }
+        />
       </ListItemButton>
 
       {clipboardItems.map((clipboardItem, index) => {
         return (
           <>
-            <ListSubheader>{`Item ${index + 1}`}</ListSubheader>
+            <ListSubheader>{`${
+              LocalizedStringManager.getInstance().currentLocalizedStrings.item
+            } ${index + 1}`}</ListSubheader>
             <ClipboardItemComponent
               key={
                 // eslint-disable-next-line react/no-array-index-key
