@@ -16,14 +16,16 @@ import PasteErrorComponent from "./Components/paste-error-component/paste-error-
 export function App() {
   const [state, dispatch] = useReducer(counterReducer, createInitialState());
 
-  // TODO: Can this be async?
-  const onPaste = useCallback(async () => {
-    try {
-      const clipboardItems = await getClipboardItems();
-      dispatch({ type: PasteActionKind.Data, payload: clipboardItems });
-    } catch (error) {
-      dispatch({ type: PasteActionKind.Error, payload: error as Error });
-    }
+  const onPaste = useCallback(() => {
+    const callGetClipboardItems = async () => {
+      try {
+        const clipboardItems = await getClipboardItems();
+        dispatch({ type: PasteActionKind.Data, payload: clipboardItems });
+      } catch (error) {
+        dispatch({ type: PasteActionKind.Error, payload: error as Error });
+      }
+    };
+    callGetClipboardItems();
   }, []);
 
   // create a function to reset state

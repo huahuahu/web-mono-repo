@@ -1,6 +1,7 @@
 import { Box, Alert, Button } from "@mui/material";
 import React from "react";
 import styles from "./paste-error-component.module.css";
+import { LocalizedStringManager } from "../../Localization/localizedString";
 
 export interface PasteErrorComponentProps {
   error: Error;
@@ -22,7 +23,10 @@ export function PasteErrorComponent(props: PasteErrorComponentProps) {
         severity="error"
         action={
           <Button color="inherit" size="small" onClick={onDismiss}>
-            Back
+            {
+              LocalizedStringManager.getInstance().currentLocalizedStrings
+                .backButtonString
+            }
           </Button>
         }
       >
