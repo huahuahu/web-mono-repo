@@ -53,7 +53,7 @@
           "fileReplacements": [
             {
               "replace": "apps/clipboard-inspector/src/environments/environment.ts",
-              "with": "apps/clipboard-inspector/src/environments/environment.prod.ts"
+              "with": "apps/clipboard-inspector/src/environments/environment.prod.mobile.ts"
             }
           ],
           "optimization": true,
