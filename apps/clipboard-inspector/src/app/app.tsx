@@ -1,6 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "@emotion/react";
-import { CssBaseline, createTheme, useMediaQuery } from "@mui/material";
+import { CssBaseline, Toolbar, createTheme, useMediaQuery } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import ClipboardComponent from "./Components/ClipboardComponent/ClipboardComponent";
 import { PrivacyComponent } from "./Components/PrivacyComponent/PrivacyComponent";
@@ -21,6 +21,9 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ResponsiveAppBar />
+      <Toolbar /* https://mui.com/material-ui/react-app-bar/#fixed-placement */
+      />
+
       <Routes>
         <Route path="/home" element={<ClipboardComponent />} />
         <Route path="/privacy" element={<PrivacyComponent />} />
