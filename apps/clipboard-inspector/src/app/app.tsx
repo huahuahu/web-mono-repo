@@ -1,90 +1,37 @@
-import React, { useCallback, useMemo, useReducer } from "react";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box/Box";
+import React from "react";
 import { ThemeProvider } from "@emotion/react";
-import { Button, CssBaseline, createTheme, useMediaQuery } from "@mui/material";
-import { getClipboardItems } from "./Data/getClipboardItems";
-import PasteButton from "./Components/paste-button/paste-button";
-import ClipboardItemListComponent from "./Components/clipboard-item-list-component/clipboard-item-list-component";
-import {
-  PasteActionKind,
-  counterReducer,
-  createInitialState,
-} from "./Data/reducer";
-import PasteErrorComponent from "./Components/paste-error-component/paste-error-component";
+import { CssBaseline, Toolbar, useMediaQuery } from "@mui/material";
+import { Route, Routes } from "react-router-dom";
+import ClipboardComponent from "./Components/ClipboardComponent/ClipboardComponent";
+import { PrivacyComponent } from "./Components/PrivacyComponent/PrivacyComponent";
+import { getMUITheme } from "./style/themeStore/themestore";
+import { ResponsiveAppBar } from "./Components/appbar/AppBar";
+import { environment } from "../environments/environment";
 
 export function App() {
-  const [state, dispatch] = useReducer(counterReducer, createInitialState());
-
-  const onPaste = useCallback(() => {
-    const callGetClipboardItems = async () => {
-      try {
-        const clipboardItems = await getClipboardItems();
-        dispatch({ type: PasteActionKind.Data, payload: clipboardItems });
-      } catch (error) {
-        dispatch({ type: PasteActionKind.Error, payload: error as Error });
-      }
-    };
-    callGetClipboardItems();
-  }, []);
-
-  // create a function to reset state
-  const onReset = useCallback(() => {
-    dispatch({ type: PasteActionKind.Reset, payload: undefined });
-  }, []);
-
   // get theme using useMediaQuery
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
   // create mui theme based on prefersDarkMode
   const theme = React.useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: prefersDarkMode ? "dark" : "light",
-        },
-      }),
+    () => getMUITheme(prefersDarkMode),
     [prefersDarkMode]
   );
-
-  const pasteScene = useMemo(() => {
-    return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          flexGrow: 1,
-        }}
-      >
-        <PasteButton onPaste={onPaste} />
-      </Box>
-    );
-  }, [onPaste]);
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container
-        maxWidth="md"
-        sx={{
-          flexGrow: 1,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        {state.shouldShowPasteButton && pasteScene}
-        {state.data && (
-          <ClipboardItemListComponent
-            onReset={onReset}
-            clipboardItems={state.data}
-          />
-        )}
-        {state.error && (
-          <PasteErrorComponent error={state.error} onDismiss={onReset} />
-        )}
-      </Container>
+      <ResponsiveAppBar />
+      {!environment.isMobile && (
+        <Toolbar /* https://mui.com/material-ui/react-app-bar/#fixed-placement */
+        />
+      )}
+
+      <Routes>
+        <Route path="/home" element={<ClipboardComponent />} />
+        <Route path="/privacy" element={<PrivacyComponent />} />
+        <Route path="*" element={<ClipboardComponent />} />
+      </Routes>
     </ThemeProvider>
   );
 }

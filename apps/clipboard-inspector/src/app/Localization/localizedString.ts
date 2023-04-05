@@ -1,8 +1,12 @@
+/* eslint-disable prettier/prettier */
 export interface LocalizedString {
   paste: string;
   noDataTips: string;
   backButtonString: string;
   item: string;
+  home: string;
+  privacy: string;
+  privacyPolicy: string;
 }
 
 const ZhCN: LocalizedString = {
@@ -10,6 +14,9 @@ const ZhCN: LocalizedString = {
   noDataTips: "剪贴板中没有数据",
   backButtonString: "返回",
   item: "项目",
+  home: "主页",
+  privacy: "关于隐私",
+  privacyPolicy: "本程序不会收集任何个人信息,不会发出任何网络请求。",
 };
 
 const EnUs: LocalizedString = {
@@ -17,6 +24,9 @@ const EnUs: LocalizedString = {
   noDataTips: "No data in clipboard",
   backButtonString: "Back",
   item: "Item",
+  home: "Home",
+  privacy: "Privacy",
+  privacyPolicy: "This app will not collect any personal information, and will not send any network requests.",
 };
 
 export class LocalizedStringManager {
