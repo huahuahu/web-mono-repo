@@ -24,4 +24,9 @@ deploy-clipboard-inspector-mobile:
 	npx nx build clipboard-inspector --configuration=production-mobile; \
 	cp dist/apps/clipboard-inspector/index.html ../ios-mono-repo-huahuahu/MonoRepos/ClipboardInspector/ClipboardInspector/Resources/clipboard.html
 
+deploy-clipboard-inspector-web:
+	git checkout azure-websites; \
+	git reset --hard main; \
+	git push --force-with-lease; \
+
 
