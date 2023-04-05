@@ -1,6 +1,11 @@
 import React from "react";
 import { ThemeProvider } from "@emotion/react";
-import { CssBaseline, Toolbar, createTheme, useMediaQuery } from "@mui/material";
+import {
+  CssBaseline,
+  Toolbar,
+  createTheme,
+  useMediaQuery,
+} from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import ClipboardComponent from "./Components/ClipboardComponent/ClipboardComponent";
 import { PrivacyComponent } from "./Components/PrivacyComponent/PrivacyComponent";
