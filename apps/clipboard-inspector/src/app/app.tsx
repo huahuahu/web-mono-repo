@@ -11,6 +11,7 @@ import ClipboardComponent from "./Components/ClipboardComponent/ClipboardCompone
 import { PrivacyComponent } from "./Components/PrivacyComponent/PrivacyComponent";
 import { getMUITheme } from "./style/themeStore/themestore";
 import { ResponsiveAppBar } from "./Components/appbar/AppBar";
+import { environment } from "../environments/environment";
 
 export function App() {
   // get theme using useMediaQuery
@@ -26,8 +27,10 @@ export function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ResponsiveAppBar />
-      <Toolbar /* https://mui.com/material-ui/react-app-bar/#fixed-placement */
-      />
+      {!environment.isMobile && (
+        <Toolbar /* https://mui.com/material-ui/react-app-bar/#fixed-placement */
+        />
+      )}
 
       <Routes>
         <Route path="/home" element={<ClipboardComponent />} />
