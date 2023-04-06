@@ -19,7 +19,7 @@ export function MUIEntry() {
       >
         <List>
           <ListItem>
-            <Link href="/">Home</Link>
+            <Link href="/mui/signin">Sign In</Link>
           </ListItem>
 
           <ListItem>
