@@ -1,10 +1,25 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Typography } from "@mui/material";
+import { Container, Link, Typography } from "@mui/material";
 import React from "react";
+import { Outlet } from "react-router-dom";
 import styles from "./app.module.css";
 
 export function App() {
-  return <Typography>Welcome</Typography>;
+  return (
+    <Container
+      component="main"
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "space-evenly",
+        height: "100vh",
+      }}
+    >
+      <Link href="/">Home</Link>
+      <Link href="/mui">MUI</Link>
+    </Container>
+  );
 }
 
 export default App;
