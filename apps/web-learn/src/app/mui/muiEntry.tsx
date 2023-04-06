@@ -15,11 +15,15 @@ export function MUIEntry() {
       <Container
         sx={{
           flexGrow: 1,
+          justifyContent: "space-evenly",
         }}
       >
         <List>
           <ListItem>
             <Link href="/mui/signin">Sign In</Link>
+          </ListItem>
+          <ListItem>
+            <Link href="pricing">Pricing</Link>
           </ListItem>
 
           <ListItem>
