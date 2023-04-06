@@ -21,6 +21,9 @@ export function MUIEntry() {
           <ListItem>
             <Link href="/mui/signin">Sign In</Link>
           </ListItem>
+          <ListItem>
+            <Link href="pricing">Pricing</Link>
+          </ListItem>
 
           <ListItem>
             <Link href="/">Home</Link>
