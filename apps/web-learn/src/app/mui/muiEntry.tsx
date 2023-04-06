@@ -15,6 +15,7 @@ export function MUIEntry() {
       <Container
         sx={{
           flexGrow: 1,
+          justifyContent: "space-evenly",
         }}
       >
         <List>

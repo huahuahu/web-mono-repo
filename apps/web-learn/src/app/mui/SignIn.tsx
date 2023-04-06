@@ -49,7 +49,6 @@ export default function SignIn() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
-          p={2}
           sx={{
             marginTop: 8,
             display: "flex",

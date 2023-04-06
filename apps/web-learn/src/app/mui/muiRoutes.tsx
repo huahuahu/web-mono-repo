@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import React from "react";
 import { MUIEntry } from "./muiEntry";
-import SignIn from "./Signin";
+import SignIn from "./SignIn";
 import Pricing from "./Pricing";
 
 export const muiRoutes: RouteObject[] = [
