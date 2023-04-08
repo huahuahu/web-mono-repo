@@ -26,7 +26,7 @@ export function MUIEntry() {
             <Link href="pricing">Pricing</Link>
           </ListItem>
           <ListItem>
-            <Link href="dashboard">Home</Link>
+            <Link href="dashboard">Dashboard</Link>
           </ListItem>
 
           <ListItem>
