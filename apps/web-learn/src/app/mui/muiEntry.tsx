@@ -16,9 +16,18 @@ export function MUIEntry() {
         sx={{
           flexGrow: 1,
           justifyContent: "space-evenly",
+          display: "flex",
         }}
       >
-        <List>
+        <List
+          sx={{
+            flexDirection: "column",
+            flexFlow: 1,
+            display: "flex",
+            alignItems: "center",
+            pt: 8,
+          }}
+        >
           <ListItem>
             <Link href="/mui/signin">Sign In</Link>
           </ListItem>
@@ -31,6 +40,9 @@ export function MUIEntry() {
 
           <ListItem>
             <Link href="/">Home</Link>
+          </ListItem>
+          <ListItem>
+            <Link href="stickyfooter">Sticky Footer</Link>
           </ListItem>
         </List>
       </Container>
