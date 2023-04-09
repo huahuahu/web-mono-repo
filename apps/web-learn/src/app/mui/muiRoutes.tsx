@@ -4,6 +4,7 @@ import { MUIEntry } from "./muiEntry";
 import SignIn from "./SignIn";
 import Pricing from "./Pricing";
 import Dashboard from "./Dashboard/Dashboard";
+import StickyFooter from "./StickyFooter";
 
 export const muiRoutes: RouteObject[] = [
   {
@@ -21,5 +22,9 @@ export const muiRoutes: RouteObject[] = [
   {
     path: "/mui/dashboard",
     element: <Dashboard />,
+  },
+  {
+    path: "/mui/stickyfooter",
+    element: <StickyFooter />,
   },
 ];
