@@ -22,6 +22,8 @@ export function App() {
         flexGrow: 1,
         display: "flex",
         flexDirection: "column",
+        mt: 2,
+        mb: 4,
       }}
     >
       <Box>{answer && <Typography variant="body1">{answer}</Typography>}</Box>
