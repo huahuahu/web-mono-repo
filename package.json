@@ -71,6 +71,7 @@
     "vitest": "^0.25.8"
   },
   "dependencies": {
+    "@azure/static-web-apps-cli": "^1.1.1",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",

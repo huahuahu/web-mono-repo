@@ -1,9 +1,17 @@
 /* eslint-disable prettier/prettier */
 import { Container, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { LocalizedStringManager } from "../../Localization/localizedString";
 
 export function PrivacyComponent() {
+  useEffect(() => {
+    (async function () {
+      const text  = await( await fetch(`/api/clipboard-test`)).text();
+      console.log(text);
+    })();
+  }, []);
+
+  
   return (
     <Container
       component="main"
