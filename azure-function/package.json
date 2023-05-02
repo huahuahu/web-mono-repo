@@ -8,5 +8,14 @@
     "prestart": "npm run build",
     "start": "func start",
     "test": "echo \"No tests yet...\""
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.6.3",
+    "@azure/functions": "^3.0.0",
+    "@types/node": "^16.x",
+    "typescript": "^4.0.0"
   }
 }
