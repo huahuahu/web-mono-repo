@@ -3,5 +3,11 @@
     "navigationFallback": {
         "rewrite": "/index.html",
         "exclude": ["/*.{png,jpg,gif,woff,woff2}", "/assets/*"]
-      }
+      },
+      "routes": [
+        {
+          "route": "/login",
+          "redirect": "/.auth/login/github"
+        }
+      ]
 }
