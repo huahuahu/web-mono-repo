@@ -9,18 +9,18 @@
   },
   "routes": [
     {
-      "route": "/*",
-      "allowedRoles": [
-        "authenticated"
-      ]
-    },
-    {
       "route": "/login",
       "redirect": "/.auth/login/github"
     },
     {
       "route": "/logout",
       "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "authenticated"
+      ]
     }
   ],
   "responseOverrides": {
