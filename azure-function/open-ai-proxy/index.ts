@@ -4,9 +4,9 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     context.log('HTTP trigger function processed a request.');
     const name = (req.query.name || (req.body && req.body.name));
     const question = (req.query.question || (req.body && req.body.question)) as string;
-    console.log("body type is  ", typeof req.body, req.body.values, req.body.keys);
+    context.log("body type is  ", typeof req.body);
 
-    console.log("body is " + req.body);
+    context.log("body is " + req.body);
 
     console.log("quesiont is " + question);
 
