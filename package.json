@@ -5,6 +5,7 @@
   "scripts": {},
   "private": true,
   "devDependencies": {
+    "@azure/functions": "^3.0.0",
     "@babel/preset-react": "^7.14.5",
     "@nrwl/cypress": "15.8.9",
     "@nrwl/esbuild": "15.8.9",
