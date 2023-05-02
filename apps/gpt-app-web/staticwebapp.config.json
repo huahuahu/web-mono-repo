@@ -1,7 +1,32 @@
 {
-    "trailingSlash": "auto",
-    "navigationFallback": {
-        "rewrite": "/index.html",
-        "exclude": ["/*.{png,jpg,gif,woff,woff2}", "/assets/*"]
-      }
+  "trailingSlash": "auto",
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/*.{png,jpg,gif,woff,woff2}",
+      "/assets/*"
+    ]
+  },
+  "routes": [
+    {
+      "route": "/login",
+      "redirect": "/.auth/login/github"
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    },
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "authenticated"
+      ]
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/.auth/login/github"
+    }
+  }
 }
