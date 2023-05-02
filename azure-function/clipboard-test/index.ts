@@ -7,7 +7,7 @@ const httpTrigger: AzureFunction = async function (context: Context, req: HttpRe
     let responseMessage = name
         ? "Hello,lalal " + name + ". This HTTP triggered function executed successfully." + testEnv
         : "lalaal This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response." + testEnv;
-    responseMessage += " " + process.env.TEST_ENVIRONMENT + "env";
+    responseMessage += " " + process.env.TEST_ENVIRONMENT + "env" + "Preview";
     context.res = {
         // status: 200, /* Defaults to 200 */
         body: responseMessage
