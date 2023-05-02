@@ -1,13 +1,32 @@
 {
-    "trailingSlash": "auto",
-    "navigationFallback": {
-        "rewrite": "/index.html",
-        "exclude": ["/*.{png,jpg,gif,woff,woff2}", "/assets/*"]
-      },
-      "routes": [
-        {
-          "route": "/login",
-          "redirect": "/.auth/login/github"
-        }
+  "trailingSlash": "auto",
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/*.{png,jpg,gif,woff,woff2}",
+      "/assets/*"
+    ]
+  },
+  "routes": [
+    {
+      "route": "/*",
+      "allowedRoles": [
+        "authenticated"
       ]
+    },
+    {
+      "route": "/login",
+      "redirect": "/.auth/login/github"
+    },
+    {
+      "route": "/logout",
+      "redirect": "/.auth/logout"
+    }
+  ],
+  "responseOverrides": {
+    "401": {
+      "statusCode": 302,
+      "redirect": "/.auth/login/github"
+    }
+  }
 }
