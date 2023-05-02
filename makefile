@@ -34,4 +34,8 @@ deploy-clipboard-inspector-in-ci:
 	npx nx build clipboard-inspector --configuration=production; \
 	cp apps/clipboard-inspector/staticwebapp.config.json dist/apps/clipboard-inspector/staticwebapp.config.json; \
 
+deploy-gpt-demo-in-ci:
+	make install; \
+	npx nx build gpt-app-web --configuration=production; \
+	cp apps/gpt-app-web/staticwebapp.config.json dist/apps/gpt-app-web/staticwebapp.config.json; \
 
