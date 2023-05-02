@@ -30,3 +30,9 @@ deploy-clipboard-inspector-web:
 	git push --force-with-lease; \
 
 
+deploy-clipboard-in-ci:
+    make install; \
+	npx nx build clipboard-inspector --configuration=production; \
+	cp apps/clipboard-inspector/staticwebapp.config.json dist/apps/clipboard-inspector/staticwebapp.config.json; \
+
+
