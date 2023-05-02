@@ -10,9 +10,12 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "@azure/static-web-apps-cli": "^1.1.1"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.6.3"
+    "@types/node-fetch": "^2.6.3",
+    "@azure/functions": "^3.0.0",
+    "@types/node": "^16.x",
+    "typescript": "^4.0.0"
   }
 }
