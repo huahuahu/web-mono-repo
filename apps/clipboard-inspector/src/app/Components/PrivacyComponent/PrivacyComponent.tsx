@@ -6,7 +6,7 @@ import { LocalizedStringManager } from "../../Localization/localizedString";
 export function PrivacyComponent() {
   useEffect(() => {
     (async function () {
-      const text  = await( await fetch(`/api/clipboard-test`)).text();
+      const text  = await( await fetch(`/api/clipboard-test?name=haha`)).text();
       console.log(text);
     })();
   }, []);

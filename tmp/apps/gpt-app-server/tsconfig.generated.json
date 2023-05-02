@@ -1,6 +1,0 @@
-{
-  "compilerOptions": {
-    "paths": {}
-  },
-  "extends": "../../../apps/gpt-app-server/tsconfig.app.json"
-}
